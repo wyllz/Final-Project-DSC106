@@ -84,14 +84,6 @@ input[type=range] { accent-color: var(--blue); }
 .gx-caption b.o { color: var(--orange); }
 .gx-caption b.b { color: var(--blue); }
 
-.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: .85rem; color: var(--ink2); margin: 2px 0 8px; }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.swatch { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
-.swatch.alive { background: var(--blue); }
-.swatch.ghost { border: 2px solid var(--orange); }
-.swatch.line-real { width: 18px; height: 3px; border-radius: 2px; background: var(--blue); }
-.swatch.line-ghost { width: 18px; height: 0; border-top: 2px dashed var(--orange); border-radius: 0; }
-
 /* tooltip */
 .tooltip {
   position: fixed; pointer-events: none; z-index: 20;
@@ -99,30 +91,6 @@ input[type=range] { accent-color: var(--blue); }
   font-size: 12.5px; line-height: 1.35; max-width: 260px; opacity: 0; transition: opacity .12s;
 }
 .tooltip .t-sub { color: #c3c2b7; }
-
-/* ---------- Ghost Town ---------- */
-.gt-layout { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(260px, 1fr); gap: 20px; }
-.gt-map { position: relative; border-radius: 14px; overflow: hidden; background: var(--surface-2); }
-.gt-map svg { cursor: grab; touch-action: none; }
-.gt-map svg:active { cursor: grabbing; }
-.gt-year {
-  position: absolute; left: 14px; top: 10px; font-size: 2.6rem; font-weight: 800;
-  color: rgba(11, 11, 11, .14); pointer-events: none; font-variant-numeric: tabular-nums;
-}
-.gt-zoom { position: absolute; right: 10px; top: 10px; display: flex; flex-direction: column; gap: 6px; }
-.gt-zoom .btn { padding: 6px 12px; font-size: .8rem; }
-.gt-stats { position: absolute; left: 14px; bottom: 10px; font-size: .82rem; color: var(--ink2);
-  background: rgba(252, 252, 251, .9); padding: 4px 10px; border-radius: 8px; }
-.gt-panel h3 { margin: 0; font-size: 1.15rem; }
-.gt-panel .meta { color: var(--ink2); font-size: .88rem; margin-bottom: 12px; }
-.tally { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
-.tally div { background: var(--surface-2); border-radius: 12px; padding: 8px 10px; }
-.tally .big { display: block; font-size: 1.9rem; font-weight: 800; line-height: 1.1; }
-.tally .lbl { font-size: .75rem; color: var(--ink2); line-height: 1.25; display: block; }
-.tally .real .big { color: var(--blue); }
-.tally .ghosts .big { color: var(--orange); }
-.gt-panel p.say { font-size: .92rem; margin: 6px 0 14px; }
-.gt-panel h4 { margin: 0 0 4px; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
 
 /* ---------- Lease game ---------- */
 .lease-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; gap: 12px; flex-wrap: wrap; }
@@ -144,6 +112,5 @@ input[type=range] { accent-color: var(--blue); }
 
 @media (max-width: 760px) {
   section.plaza { padding: 20px 16px; border-radius: 0; }
-  .gt-layout { grid-template-columns: 1fr; }
   header.intro h1 { font-size: 1.8rem; }
 }

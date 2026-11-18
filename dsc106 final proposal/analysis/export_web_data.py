@@ -1,10 +1,9 @@
-"""Export small JSON files for the three D3 interactives.
+"""Export small JSON files for the two D3 interactives.
 
 Usage: python3 export_web_data.py <data/restaurants.csv> <out_dir>
 
 Writes:
   guess.json  survival by # same-cuisine rivals within 200 m, naive vs time-matched
-  philly.json every Philadelphia restaurant (location, cuisine, operating span, storefront id)
   lease.json  rounds for the "Would you sign the lease?" game + the real aggregate rates
 """
 import sys, json
@@ -33,18 +32,7 @@ guess = {
     "n_restaurants": int(len(ind)), "n_cohort": int(len(c16)),
 }
 
-# ---------- 2. philly.json ----------
-ph = r[r.city == "Philadelphia"].copy()
-sites = {s: i for i, s in enumerate(ph.site.dropna().unique())}
-philly = [{
-    "name": row.name, "lat": round(row.latitude, 5), "lon": round(row.longitude, 5),
-    "cuisine": row.cuisine if isinstance(row.cuisine, str) else None,
-    "ind": bool(not row.chain), "open": int(row.is_open),
-    "first": year(row.first_review), "last": year(row.last_review),
-    "site": sites.get(row.site, -1), "addr": row.address if isinstance(row.address, str) else "",
-} for row in ph.itertuples()]
-
-# ---------- 3. lease.json ----------
+# ---------- 2. lease.json ----------
 indall = r[~r.chain]
 pool = indall[(indall.first_review >= "2012-01-01") & (indall.first_review <= "2017-12-31")
               & ~indall.multi_tenant_site & indall.site.notna()]
@@ -69,8 +57,8 @@ lease = {
     "rounds": rounds,
 }
 
-for name, obj in [("guess", guess), ("philly", philly), ("lease", lease)]:
+for name, obj in [("guess", guess), ("lease", lease)]:
     with open(f"{OUT}/{name}.json", "w") as f:
         json.dump(obj, f, separators=(",", ":"), ensure_ascii=False)
-print("philly", len(philly), "rounds", len(rounds), "rates", lease["rates"])
+print("rounds", len(rounds), "rates", lease["rates"])
 print("naive", [round(x["rate"], 3) for x in guess["naive"]], "matched", [round(x["rate"], 3) for x in guess["matched"]])

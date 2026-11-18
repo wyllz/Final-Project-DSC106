@@ -1,4 +1,4 @@
-// Shared tokens and helpers for the three interactives.
+// Shared tokens and helpers for the interactives.
 const C = {
   ink: "#0b0b0b", ink2: "#52514e", muted: "#898781", grid: "#e1e0d9", axis: "#c3c2b7",
   surface: "#fcfcfb", blue: "#2a78d6", orange: "#eb6834", blueSoft: "#cde2fb",
@@ -36,7 +36,3 @@ function hideTip() { tooltip.style("opacity", 0); }
 const yr = (v) => Math.floor(v);
 const pct = d3.format(".0%");
 const comma = d3.format(",");
-
-function spanText(d) {
-  return d.open ? `${yr(d.first)} – still open` : `${yr(d.first)} – closed ${yr(d.last)}`;
-}

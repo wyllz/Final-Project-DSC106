@@ -1,4 +1,4 @@
-// Interactive 3 — "Would you sign the lease?" A guessing game about cursed storefronts.
+// Interactive 2 — "Would you sign the lease?" A guessing game about cursed storefronts.
 (async function () {
   const data = await d3.json("data/lease.json");
   const root = d3.select("#lease");
