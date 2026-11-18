@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crowd Cuisine Competition: interactive prototypes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+<body>
+  <header class="intro">
+    <div class="kicker">DSC 106 Final Project · interactive prototypes</div>
+    <h1>Crowd Cuisine Competition: do rivals really kill restaurants?</h1>
+    <p class="lede">Restaurants of the same cuisine love to cluster, but common wisdom says a competitor next door is bad
+      for business. Three stops through 52,268 restaurants from the Yelp Open Dataset.</p>
+  </header>
+
+  <!-- Plaza 1 -->
+  <section class="plaza" id="guess">
+    <div class="kicker">Plaza 1 · Make a prediction</div>
+    <h2>Draw your guess, then bust the ghosts</h2>
+    <p class="sub">We gave you the first point: 69% of independent restaurants with no same-cuisine rival within 200 m
+      are still open. What happens as rivals pile up? Draw the rest of the line.</p>
+    <div class="chart"></div>
+    <div class="controls" style="margin-top:10px"></div>
+    <div class="readout"></div>
+    <div class="ghost-explainer" hidden>
+      <div class="gx-head">
+        <h3>Wait, what's a ghost?</h3>
+        <button class="btn secondary gx-replay">↻ Replay</button>
+      </div>
+      <div class="gx-chart"></div>
+      <p class="gx-caption"></p>
+      <p class="note">Illustrative example. In the real data, we estimate each restaurant's open years from its first and
+        last Yelp review.</p>
+    </div>
+  </section>
+
+  <!-- Plaza 2 -->
+  <section class="plaza" id="ghosttown">
+    <div class="kicker">Plaza 2 · Explore the city</div>
+    <h2>Ghost Town: Philadelphia's restaurants through time</h2>
+    <p class="sub">Press play to watch restaurants open (blue) and leave ghosts behind when they close (orange rings).
+      Click any restaurant to see its same-cuisine "rivals": <b style="color:var(--blue)">solid lines</b> were open at the
+      same time, <b style="color:var(--orange)">dashed ghosts</b> never were. Scroll to zoom, drag to pan.</p>
+    <div class="controls"></div>
+    <div class="legend">
+      <span><i class="swatch alive"></i>Open in the chosen year</span>
+      <span><i class="swatch ghost"></i>Ghost: already closed</span>
+      <span><i class="swatch line-real"></i>Real rival (open at the same time)</span>
+      <span><i class="swatch line-ghost"></i>Ghost rival (never overlapped)</span>
+    </div>
+    <div class="gt-layout">
+      <div class="gt-map"></div>
+      <div class="gt-panel">
+        <h3></h3>
+        <div class="meta"></div>
+        <div class="tally">
+          <div class="naive"><span class="big"></span><span class="lbl"></span></div>
+          <div class="real"><span class="big"></span><span class="lbl">real rivals, open at the same time</span></div>
+          <div class="ghosts"><span class="big"></span><span class="lbl">ghosts that never overlapped</span></div>
+        </div>
+        <p class="say"></p>
+        <h4>Storefront history at this address</h4>
+        <div class="storefront"></div>
+      </div>
+    </div>
+    <p class="note">Operating years are estimated from each restaurant's first and last Yelp review. Includes chains and
+      restaurants without a cuisine tag (those can't be selected).</p>
+  </section>
+
+  <!-- Plaza 3 -->
+  <section class="plaza" id="lease">
+    <div class="kicker">Plaza 3 · Play the game</div>
+    <h2>Would you sign the lease?</h2>
+    <p class="sub">Five real storefronts. Each one shows the restaurants that already died at that address, then a new
+      tenant moves in. Will it still be open in 2022?</p>
+    <div class="lease-top">
+      <div class="pips"></div>
+      <div class="score" style="font-weight:650"></div>
+    </div>
+    <div class="lease-card"></div>
+    <div class="lease-finale" style="display:none"></div>
+  </section>
+
+  <p class="note" style="max-width:1000px;margin:0 auto 48px;padding:0 24px">Source: Yelp Open Dataset (Jan 2022 snapshot).
+    Independent restaurant = name with fewer than 5 locations in the data; rival = same primary cuisine. Survival = still
+    open in Jan 2022. These are correlations, not causal effects.</p>
+
+  <script src="js/common.js"></script>
+  <script src="js/guess.js"></script>
+  <script src="js/ghosttown.js"></script>
+  <script src="js/lease.js"></script>
+</body>
+</html>
