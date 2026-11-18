@@ -44,7 +44,7 @@
 
     // timeline of tenants
     const rows = [...r.past.map((p) => ({ ...p, past: true })), { name: r.name, first: r.first, last: r.last, open: r.open, past: false }];
-    const W = 760, rh = 30, lw = 250, h = rows.length * rh + 30;
+    const W = 1000, rh = 30, lw = 250, h = rows.length * rh + 30;
     const x = d3.scaleLinear([Math.min(d3.min(rows, (d) => d.first), r.first - 1) - 0.3, 2022.4], [lw, W - 40]);
     const svg = card.append("svg").attr("viewBox", [0, 0, W, h]).style("margin-top", "6px");
     svg.append("g").attr("class", "grid").attr("transform", `translate(0,${rows.length * rh})`)
@@ -110,7 +110,7 @@
     finale.append("h3").style("margin", "0 0 4px").text(`You called ${score} of ${ROUNDS} storefronts.`);
     finale.append("p").attr("class", "sub").text(
       "Here's what all 11,461 independent restaurants that opened in 2012–2017 tell us. Each dot is one of your storefronts: blue if it survived, orange if it closed.");
-    const W = 760, H = 330, m = { t: 30, r: 20, b: 50, l: 56 };
+    const W = 1000, H = 340, m = { t: 30, r: 20, b: 50, l: 56 };
     const svg = finale.append("svg").attr("viewBox", [0, 0, W, H]);
     const labels = ["Fresh address", "1 failed tenant", "2+ failed tenants"];
     const x = d3.scaleBand(labels, [m.l, W - m.r]).padding(0.38);

@@ -51,7 +51,34 @@
     <div class="lease-finale" style="display:none"></div>
   </section>
 
-  <p class="note" style="max-width:1000px;margin:0 auto 48px;padding:0 24px">Source: Yelp Open Dataset (Jan 2022 snapshot).
+  <!-- Writeup -->
+  <section class="plaza writeup" id="writeup">
+    <div class="kicker">Writeup</div>
+    <h3>What we've done so far</h3>
+    <p>
+      Our group found the Yelp Open Data, a dataset containing restaurants in 11 metro areas ranging from 2005 to 2026,
+       and narrowed the content to 52,268 independent restaurants with a cuisine tag. Using Python, we counted how many 
+       similar-cuisine rivals sit within a 200m radius, then exported small JSON files that our D3 can load. We hypothesized 
+       that restaurants with nearby competitors hurt an individual restaurant’s survival; however, after analyzing, we discovered a twist. 
+       Yelp keeps closed restaurants in the data, so many “rivals” are not currently open, and they are really just “ghosts” 
+       (earlier restaurants that failed in the same spot and never competed at all). To fix the extraneous features, we used each restaurant’s 
+       first and last review dates to count only rivals that were open at the same time. With that correction, the crowding penalty shrinks from 
+       19 percentage points to about 2. We built two interactive visualizations around this finding. The first asks readers to draw their guess 
+       before revealing the data and "busting the ghosts," with an animated explainer of what a ghost is. The second is a game where readers decide 
+       whether a new restaurant will survive in a storefront where others have already failed.
+    </p>
+
+    <h3>What will be most challenging, and why</h3>
+    <p>The most challenging part will be properly explaining the “ghost” idea clearly. Our main findings depend on a data artifact that most readers 
+      would never have thought about, so if the explanation is unclear, the whole story ends up being confusing. We also need to keep our comparisons honest. 
+      For example, the ghost-free line follows a different group of restaurants and some of its columns are small, so we have to show uncertainty without 
+      overwhelming the reader. Another challenge is the page design: we want a scrolling layout where a character walks down a path past "plazas" for each 
+      visualization, which adds animation and layout work on top of the charts. Finally, Yelp's terms limit what we can publish, so we have to decide which data 
+      to keep aggregated and which details, like business names, are safe to show on a public site.
+    </p>
+  </section>
+
+  <p class="note page-note">Source: Yelp Open Dataset (Jan 2022 snapshot).
     Independent restaurant = name with fewer than 5 locations in the data; rival = same primary cuisine. Survival = still
     open in Jan 2022. These are correlations, not causal effects.</p>
 

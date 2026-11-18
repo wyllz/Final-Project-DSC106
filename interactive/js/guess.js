@@ -2,7 +2,7 @@
 (async function () {
   const data = await d3.json("data/guess.json");
   const root = d3.select("#guess");
-  const W = 840, H = 430, m = { t: 26, r: 190, b: 62, l: 62 };
+  const W = 1080, H = 470, m = { t: 26, r: 190, b: 62, l: 62 };
   const n = data.labels.length;
 
   const svg = root.select(".chart").append("svg").attr("viewBox", [0, 0, W, H]);
@@ -229,7 +229,7 @@
   const explainer = (() => {
     const box = root.select(".ghost-explainer");
     const cap = box.select(".gx-caption");
-    const GW = 760, GH = 176, gl = 112, gr = 24;
+    const GW = 1000, GH = 176, gl = 112, gr = 24;
     const gs = box.select(".gx-chart").append("svg").attr("viewBox", [0, 0, GW, GH]);
     const gx = d3.scaleLinear([2009.4, 2023.9], [gl, GW - gr]);
     const shops = [
